@@ -1,0 +1,10 @@
+{
+	"actions": [
+		{
+			"say": "I can do things like change the background color, change the font size, update the title, or simply even reset everything."
+		},
+		{
+			"listen": true
+		}
+	]
+}
