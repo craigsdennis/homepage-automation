@@ -1,15 +1,19 @@
-
 function paramsFromEvent(event) {
     const params = {};
     // First populate from a possible `collect` call...not the kind from prison.
     // https://www.twilio.com/docs/autopilot/actions/collect
     const memory = JSON.parse(event.Memory);
-    const collectedData = memory && memory.twilio && memory.twilio.collected_data;
+    const collectedData =
+        memory && memory.twilio && memory.twilio.collected_data;
     if (collectedData) {
         for (formKey of Object.keys(collectedData)) {
             // All collected data is persistent for the session
             // We only want to keep versions that have been set since we last queued a command
-            if (memory.lastCommandQueuedAt && collectedData[formKey].date_completed < memory.lastCommandQueuedAt) {
+            if (
+                memory.lastCommandQueuedAt &&
+                collectedData[formKey].date_completed <
+                    memory.lastCommandQueuedAt
+            ) {
                 continue;
             }
             let answers = collectedData[formKey].answers;
@@ -20,7 +24,7 @@ function paramsFromEvent(event) {
         }
     }
     // Then override any memory if the Field values are present on the request
-    // Fields are not persisted 
+    // Fields are not persisted
     for (key of Object.keys(event)) {
         let fieldName = key.match(/Field_(.*)_Value/);
         if (fieldName && fieldName.length > 0) {

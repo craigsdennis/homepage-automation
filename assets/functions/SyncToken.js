@@ -12,36 +12,36 @@
 
 exports.handler = function(context, event, callback) {
     // make sure you enable ACCOUNT_SID and AUTH_TOKEN in Functions/Configuration
-    const ACCOUNT_SID = context.ACCOUNT_SID
+    const ACCOUNT_SID = context.ACCOUNT_SID;
 
-    const SERVICE_SID = context.SYNC_SERVICE_SID
-    const API_KEY = context.TWILIO_API_KEY
-    const API_SECRET = context.TWILIO_API_SECRET
+    const SERVICE_SID = context.SYNC_SERVICE_SID;
+    const API_KEY = context.TWILIO_API_KEY;
+    const API_SECRET = context.TWILIO_API_SECRET;
 
     // REMINDER: This identity is only for prototyping purposes
-    const IDENTITY = 'only for testing'
+    const IDENTITY = 'only for testing';
 
-    const AccessToken = Twilio.jwt.AccessToken
-    const SyncGrant = AccessToken.SyncGrant
+    const AccessToken = Twilio.jwt.AccessToken;
+    const SyncGrant = AccessToken.SyncGrant;
 
     const syncGrant = new SyncGrant({
         serviceSid: SERVICE_SID,
-    })
+    });
 
-    const accessToken = new AccessToken(ACCOUNT_SID, API_KEY, API_SECRET)
+    const accessToken = new AccessToken(ACCOUNT_SID, API_KEY, API_SECRET);
 
-    accessToken.addGrant(syncGrant)
-    accessToken.identity = IDENTITY
+    accessToken.addGrant(syncGrant);
+    accessToken.identity = IDENTITY;
     // Modification of template starts here
-    let response = new Twilio.Response()
-    response.setStatusCode(200)
+    let response = new Twilio.Response();
+    response.setStatusCode(200);
     response.setHeaders({
         'Content-Type': 'application/json',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Methods': 'GET',
         'Access-Control-Allow-Headers': 'Content-Type',
-    })
-    response.appendHeader()
-    response.setBody({ token: accessToken.toJwt() })
-    callback(null, response)
-}
+    });
+    response.appendHeader();
+    response.setBody({ token: accessToken.toJwt() });
+    callback(null, response);
+};
