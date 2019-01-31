@@ -1,0 +1,18 @@
+body {
+    font-family: "Whitney SSm A","Whitney SSm B","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+#content {
+    padding: 3em;
+}
+
+footer {
+    margin: 2em;
+    padding: 1em;
+    border: .1em dashed red;
+    text-align: center;
+}
+
+aside {
+    font-size: .8em;
+}

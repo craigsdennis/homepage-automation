@@ -1,0 +1,21 @@
+{
+    "actions": [
+        {
+            "collect": {
+                "name": "collect_title",
+                "questions": [
+                    {
+                        "question": "What would you like the title to be?",
+                        "name": "title"
+                    }
+                ],
+                "on_complete": {
+                    "redirect": {
+                        "method": "POST",
+                        "uri": "https://citrine-neanderthal-6697.twil.io/queue-command"
+                    }
+                }
+            }
+        }
+    ]
+}

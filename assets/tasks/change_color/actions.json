@@ -1,0 +1,23 @@
+{
+	"actions": [
+		{
+			"collect": {
+				"name": "color_choice",
+				"questions": [
+					{
+						"question": "What color should I change the background to?",
+						"name": "color",
+						"type": "color",
+						"validate": false
+					}
+				],
+				"on_complete": {
+					"redirect": {
+						"method": "POST",
+						"uri": "https://citrine-neanderthal-6697.twil.io/queue-command"
+					}
+				}
+			}
+		}
+	]
+}

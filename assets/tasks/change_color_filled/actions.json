@@ -1,0 +1,10 @@
+{
+    "actions": [
+        {
+            "redirect": {
+                "method": "POST",
+                "uri": "https://citrine-neanderthal-6697.twil.io/queue-command"
+            }
+        }
+    ]
+}
